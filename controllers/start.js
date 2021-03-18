@@ -21,8 +21,8 @@ const start = {
     
     let numSongs = 0;
     
-    for (let i in playlists) {
-      numSongs = numSongs + playlists[i].songs.length;
+    for (let item of playlists) {
+      numSongs += item.songs.length;
     }
     
     // create view data object (contains data to be sent to the view e.g. page title)
