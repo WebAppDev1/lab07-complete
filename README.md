@@ -1,9 +1,10 @@
-Lab 7
+Lab 6
 =================
 
-- Added update function
-- Added total playlists statistic
-- Added total songs statistic
+- Created add playlist function
+- Created add song function
+- Added JSON store to make changes permanent
 
-Exercise:
-- Add more statistics e.g. avg, min, max
+Exercises:
+- Expanded add playlist form to include duration
+- Expanded add song form to include duration and genre

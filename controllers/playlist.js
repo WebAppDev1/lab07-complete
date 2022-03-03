@@ -12,6 +12,7 @@ const playlist = {
       title: 'Playlist',
       playlist: playlistStore.getPlaylist(playlistId),
     };
+    logger.info('about to render', viewData.playlist);
     response.render('playlist', viewData);
   },
     deleteSong(request, response) {
@@ -33,7 +34,7 @@ const playlist = {
     };
     playlistStore.addSong(playlistId, newSong);
     response.redirect('/playlist/' + playlistId);
-  },  
+  },
   updateSong(request, response) {
     const playlistId = request.params.id;
     const songId = request.params.songid;

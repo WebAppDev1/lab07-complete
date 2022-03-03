@@ -10,26 +10,26 @@ const start = {
   // index method - responsible for creating and rendering the view
   index(request, response) {
     
+    // app statistics calculations
+
+    const playlists = playlistStore.getAllPlaylists();
+
+    let numPlaylists = playlists.length;
+
+    let numSongs = 0;
+
+    for (let item of playlists) {
+        numSongs += item.songs.length;
+    }
+    
     // display confirmation message in log
     logger.info('start rendering');
     
-    // app statistics calculations
-    
-    const playlists = playlistStore.getAllPlaylists();
-    
-    let numPlaylists = playlists.length;
-    
-    let numSongs = 0;
-    
-    for (let item of playlists) {
-      numSongs += item.songs.length;
-    }
-    
     // create view data object (contains data to be sent to the view e.g. page title)
     const viewData = {
-      title: 'Welcome to the Playlist App!',
-      totalPlaylists: numPlaylists,
-      totalSongs: numSongs,
+        title: 'Welcome to the Playlist App!',
+        totalPlaylists: numPlaylists,
+        totalSongs: numSongs,
     };
     
     // render the start view and pass through the data
