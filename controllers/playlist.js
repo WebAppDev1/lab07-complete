@@ -1,8 +1,8 @@
 'use strict';
 
-const logger = require('../utils/logger');
-const uuid = require('uuid');
-const playlistStore = require('../models/playlist-store');
+import logger from '../utils/logger.js';
+import { v4 as uuidv4 } from 'uuid';
+import playlistStore from '../models/playlist-store.js';
 
 const playlist = {
   index(request, response) {
@@ -15,18 +15,18 @@ const playlist = {
     logger.info('about to render', viewData.playlist);
     response.render('playlist', viewData);
   },
-    deleteSong(request, response) {
+  deleteSong(request, response) {
     const playlistId = request.params.id;
     const songId = request.params.songid;
     logger.debug(`Deleting Song ${songId} from Playlist ${playlistId}`);
     playlistStore.removeSong(playlistId, songId);
     response.redirect('/playlist/' + playlistId);
   },
-    addSong(request, response) {
+  addSong(request, response) {
     const playlistId = request.params.id;
     const playlist = playlistStore.getPlaylist(playlistId);
     const newSong = {
-      id: uuid(),
+      id: uuidv4(),
       title: request.body.title,
       artist: request.body.artist,
       genre: request.body.genre,
@@ -40,6 +40,7 @@ const playlist = {
     const songId = request.params.songid;
     logger.debug("updating song " + songId);
     const updatedSong = {
+      id: songId,
       title: request.body.title,
       artist: request.body.artist,
       genre: request.body.genre,
@@ -50,4 +51,4 @@ const playlist = {
   }
 };
 
-module.exports = playlist;
+export default playlist;
