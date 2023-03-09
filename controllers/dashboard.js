@@ -1,9 +1,10 @@
 'use strict';
 
 // import all required modules
-import logger from '../utils/logger.js';
-import { v4 as uuidv4 } from 'uuid';
-import playlistStore from '../models/playlist-store.js';
+const logger = require('../utils/logger');
+const uuid = require('uuid');
+
+const playlistStore = require('../models/playlist-store.js');
 
 // create dashboard object
 const dashboard = {
@@ -34,7 +35,7 @@ const dashboard = {
   
   addPlaylist(request, response) {
     const newPlayList = {
-      id: uuidv4(),
+      id: uuid(),
       title: request.body.title,
       duration: request.body.duration,
       songs: [],
@@ -45,4 +46,4 @@ const dashboard = {
 };
 
 // export the dashboard module
-export default dashboard;
+module.exports = dashboard;
