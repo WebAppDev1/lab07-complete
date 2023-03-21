@@ -1,5 +1,5 @@
 Lab 7
 =================
 
-- Added update song features
-- Added playlist app statistics
+- Update song function
+- Added simple app stats
